@@ -28,7 +28,7 @@
                 "hostPort":80,
                 "ContainerPort":80
             }],
-            "links": ["clinet","server"] 
+            "links": ["client","server"] 
         }
     ]
 }
