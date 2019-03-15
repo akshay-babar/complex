@@ -1,0 +1,21 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t akshay/react-test -f ./client/Dockerfile.dev ../client
+
+script:
+  - docker run akshay/react-test npm run test -- --coverage
+
+after_success:
+  - docker build -t akshay/client ./client
+  - docker build -t akshay/nginx ./nginx
+  - docker build -t akshay/server ./server
+  - docker build -t akshay/worker ./worker
+  - docker login
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push akshay/client
+  - docker push akshay/nginx
+  - docker push akshay/server
+  - docker push akshay/worker
