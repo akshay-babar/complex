@@ -13,7 +13,7 @@ after_success:
   - docker build -t akshay/nginx ./nginx
   - docker build -t akshay/server ./server
   - docker build -t akshay/worker ./worker
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASS" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push akshay/client
   - docker push akshay/nginx
   - docker push akshay/server
