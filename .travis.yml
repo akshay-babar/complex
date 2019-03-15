@@ -9,12 +9,12 @@ script:
   - docker run akshay/react-test npm run test -- --coverage
 
 after_success:
-  - docker build -t akshay/client ./client
-  - docker build -t akshay/nginx ./nginx
-  - docker build -t akshay/server ./server
-  - docker build -t akshay/worker ./worker
+  - docker build -t akshaybabar/client ./client
+  - docker build -t akshaybabar/nginx ./nginx
+  - docker build -t akshaybabar/server ./server
+  - docker build -t akshaybabar/worker ./worker
   - echo "$DOCKER_PASS" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push akshay/client
-  - docker push akshay/nginx
-  - docker push akshay/server
-  - docker push akshay/worker
+  - docker push akshaybabar/client
+  - docker push akshaybabar/nginx
+  - docker push akshaybabar/server
+  - docker push akshaybabar/worker
