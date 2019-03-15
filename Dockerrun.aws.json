@@ -1,0 +1,30 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinition": [
+        {
+            "name": "client",
+            "image": "akshaybabar/client",
+            "hostname": "client",
+            "essentail": false
+        },{
+            "name": "server",
+            "image": "akshaybabar/server",
+            "hostname": "api",
+            "essentail": false
+        },{
+            "name": "worker",
+            "image": "akshaybabar/worker",
+            "hostname": "worker",
+            "essentail": false
+        },{
+            "name": "nginx",
+            "image": "akshaybabar/nginx",
+            "essentail": true,
+            "portMappings": [{
+                "hostPort":80,
+                "ContainerPort":80
+            }],
+            "links": ["clinet","server"]
+        }
+    ]
+}
